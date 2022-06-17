@@ -18,7 +18,6 @@ for pair in data["pairs"]:
 	x = int(s.group())
 	s=re.search(r'\d+$', nt2)
 	y = int(s.group())
-	#print("x:{}, y:{}".format(x,y))
 	if y-x ==5:
 		pairs.append(pair)
 
@@ -35,7 +34,6 @@ for pair in pairs:
 	for n in data["nts"]:
 		if n["index"] in range(x,y+1):
 			loop.append({"index": n["index"], "chain_name": n["chain_name"], "nt_code": n["nt_code"]})
-	
 	loops.append(loop)
 loops_copy=loops.copy()
 for i in range(0, len(loops)):
@@ -47,7 +45,7 @@ for i in range(0, len(loops)):
 			break
 		s+="{}".format(n["nt_code"])
 	if len(s)>6:
-		s+=" {}".format(loop[5]["index"])
+		s+=" {}".format(loops[i][5]["index"])
 		GNRA.append(s)
 
 #for s in GNRA:
@@ -68,5 +66,8 @@ for i in range(0, len(gnra)):
 #print(GNRA[0][9]=="A")
 
 
-for s in GNRA:
+for s in gnra:
 	print(s)
+
+#print(loops[5])
+#print(GNRA)
